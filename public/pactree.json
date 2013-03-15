@@ -1,0 +1,627 @@
+{
+  "name": "mesa",
+  "children": [
+    {
+      "name": "cairo",
+      "children": [
+        {
+          "name": "gtk2",
+          "children": [
+            {
+              "name": "chromium",
+              "children": []
+            },
+            {
+              "name": "dropbox",
+              "children": []
+            },
+            {
+              "name": "flashplugin-beta",
+              "children": []
+            },
+            {
+              "name": "google-chrome-dev",
+              "children": []
+            },
+            {
+              "name": "libglade",
+              "children": [
+                {
+                  "name": "pygtk",
+                  "children": [
+                    {
+                      "name": "meld",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "racket",
+              "children": []
+            },
+            {
+              "name": "sublime-text",
+              "children": []
+            },
+            {
+              "name": "trayer-srg-git",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "gtk3",
+          "children": [
+            {
+              "name": "emacs",
+              "children": [
+                {
+                  "name": "emacs-color-theme",
+                  "children": []
+                },
+                {
+                  "name": "emacs-markdown-mode-git",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "gconf",
+              "children": [
+                {
+                  "name": "emacs",
+                  "children": [
+                    {
+                      "name": "emacs-color-theme",
+                      "children": []
+                    },
+                    {
+                      "name": "emacs-markdown-mode-git",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "google-chrome-dev",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "pango",
+          "children": [
+            {
+              "name": "gtk2",
+              "children": [
+                {
+                  "name": "chromium",
+                  "children": []
+                },
+                {
+                  "name": "dropbox",
+                  "children": []
+                },
+                {
+                  "name": "flashplugin-beta",
+                  "children": []
+                },
+                {
+                  "name": "google-chrome-dev",
+                  "children": []
+                },
+                {
+                  "name": "libglade",
+                  "children": [
+                    {
+                      "name": "pygtk",
+                      "children": [
+                        {
+                          "name": "meld",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "racket",
+                  "children": []
+                },
+                {
+                  "name": "sublime-text",
+                  "children": []
+                },
+                {
+                  "name": "trayer-srg-git",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "gtk3",
+              "children": [
+                {
+                  "name": "emacs",
+                  "children": [
+                    {
+                      "name": "emacs-color-theme",
+                      "children": []
+                    },
+                    {
+                      "name": "emacs-markdown-mode-git",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "gconf",
+                  "children": [
+                    {
+                      "name": "emacs",
+                      "children": [
+                        {
+                          "name": "emacs-color-theme",
+                          "children": []
+                        },
+                        {
+                          "name": "emacs-markdown-mode-git",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "google-chrome-dev",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "librsvg",
+              "children": [
+                {
+                  "name": "emacs",
+                  "children": [
+                    {
+                      "name": "emacs-color-theme",
+                      "children": []
+                    },
+                    {
+                      "name": "emacs-markdown-mode-git",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "libtiger",
+              "children": [
+                {
+                  "name": "vlc",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "poppler",
+          "children": [
+            {
+              "name": "texlive-bin",
+              "children": [
+                {
+                  "name": "texlive-core",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "python2-cairo",
+          "children": [
+            {
+              "name": "pygtk",
+              "children": [
+                {
+                  "name": "meld",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "python2-matplotlib",
+              "children": [
+                {
+                  "name": "python2-basemap",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "libva",
+      "children": [
+        {
+          "name": "ffmpeg",
+          "children": [
+            {
+              "name": "mplayer2",
+              "children": []
+            },
+            {
+              "name": "vlc",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mesa-libgl",
+      "children": [
+        {
+          "name": "ati-dri",
+          "children": [
+            {
+              "name": "xf86-video-ati",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "cairo",
+          "children": [
+            {
+              "name": "gtk2",
+              "children": [
+                {
+                  "name": "chromium",
+                  "children": []
+                },
+                {
+                  "name": "dropbox",
+                  "children": []
+                },
+                {
+                  "name": "flashplugin-beta",
+                  "children": []
+                },
+                {
+                  "name": "google-chrome-dev",
+                  "children": []
+                },
+                {
+                  "name": "libglade",
+                  "children": [
+                    {
+                      "name": "pygtk",
+                      "children": [
+                        {
+                          "name": "meld",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "racket",
+                  "children": []
+                },
+                {
+                  "name": "sublime-text",
+                  "children": []
+                },
+                {
+                  "name": "trayer-srg-git",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "gtk3",
+              "children": [
+                {
+                  "name": "emacs",
+                  "children": [
+                    {
+                      "name": "emacs-color-theme",
+                      "children": []
+                    },
+                    {
+                      "name": "emacs-markdown-mode-git",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "gconf",
+                  "children": [
+                    {
+                      "name": "emacs",
+                      "children": [
+                        {
+                          "name": "emacs-color-theme",
+                          "children": []
+                        },
+                        {
+                          "name": "emacs-markdown-mode-git",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "google-chrome-dev",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "pango",
+              "children": [
+                {
+                  "name": "gtk2",
+                  "children": [
+                    {
+                      "name": "chromium",
+                      "children": []
+                    },
+                    {
+                      "name": "dropbox",
+                      "children": []
+                    },
+                    {
+                      "name": "flashplugin-beta",
+                      "children": []
+                    },
+                    {
+                      "name": "google-chrome-dev",
+                      "children": []
+                    },
+                    {
+                      "name": "libglade",
+                      "children": [
+                        {
+                          "name": "pygtk",
+                          "children": [
+                            {
+                              "name": "meld",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "racket",
+                      "children": []
+                    },
+                    {
+                      "name": "sublime-text",
+                      "children": []
+                    },
+                    {
+                      "name": "trayer-srg-git",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "gtk3",
+                  "children": [
+                    {
+                      "name": "emacs",
+                      "children": [
+                        {
+                          "name": "emacs-color-theme",
+                          "children": []
+                        },
+                        {
+                          "name": "emacs-markdown-mode-git",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "gconf",
+                      "children": [
+                        {
+                          "name": "emacs",
+                          "children": [
+                            {
+                              "name": "emacs-color-theme",
+                              "children": []
+                            },
+                            {
+                              "name": "emacs-markdown-mode-git",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "google-chrome-dev",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "librsvg",
+                  "children": [
+                    {
+                      "name": "emacs",
+                      "children": [
+                        {
+                          "name": "emacs-color-theme",
+                          "children": []
+                        },
+                        {
+                          "name": "emacs-markdown-mode-git",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "libtiger",
+                  "children": [
+                    {
+                      "name": "vlc",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "poppler",
+              "children": [
+                {
+                  "name": "texlive-bin",
+                  "children": [
+                    {
+                      "name": "texlive-core",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "python2-cairo",
+              "children": [
+                {
+                  "name": "pygtk",
+                  "children": [
+                    {
+                      "name": "meld",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "python2-matplotlib",
+                  "children": [
+                    {
+                      "name": "python2-basemap",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "libva",
+          "children": [
+            {
+              "name": "ffmpeg",
+              "children": [
+                {
+                  "name": "mplayer2",
+                  "children": []
+                },
+                {
+                  "name": "vlc",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "mplayer2",
+          "children": []
+        },
+        {
+          "name": "qemu",
+          "children": []
+        },
+        {
+          "name": "qt4",
+          "children": [
+            {
+              "name": "pyqt-common",
+              "children": [
+                {
+                  "name": "pyqt",
+                  "children": []
+                },
+                {
+                  "name": "python2-pyqt",
+                  "children": [
+                    {
+                      "name": "python2-matplotlib",
+                      "children": [
+                        {
+                          "name": "python2-basemap",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "qtwebkit",
+              "children": [
+                {
+                  "name": "pyqt",
+                  "children": []
+                },
+                {
+                  "name": "python2-pyqt",
+                  "children": [
+                    {
+                      "name": "python2-matplotlib",
+                      "children": [
+                        {
+                          "name": "python2-basemap",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "wkhtmltopdf",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "vlc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "xorg-xdriinfo",
+          "children": [
+            {
+              "name": "xorg-utils",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
