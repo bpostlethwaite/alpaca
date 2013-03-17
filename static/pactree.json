@@ -1,0 +1,251 @@
+{
+  "name": "nodejs",
+  "children": [
+    {
+      "name": "openssl",
+      "children": [
+        {
+          "name": "perl",
+          "children": [
+            {
+              "name": "gdbm",
+              "children": [
+                {
+                  "name": "glibc",
+                  "children": [
+                    {
+                      "name": "linux-api-headers",
+                      "children": []
+                    },
+                    {
+                      "name": "tzdata",
+                      "children": []
+                    },
+                    {
+                      "name": "filesystem",
+                      "children": [
+                        {
+                          "name": "iana-etc",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "sh",
+                  "children": [
+                    {
+                      "name": "bash",
+                      "children": [
+                        {
+                          "name": "readline",
+                          "children": [
+                            {
+                              "name": "glibc",
+                              "children": []
+                            },
+                            {
+                              "name": "ncurses",
+                              "children": [
+                                {
+                                  "name": "glibc",
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "glibc",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "db",
+              "children": [
+                {
+                  "name": "gcc-libs",
+                  "children": [
+                    {
+                      "name": "glibc",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "sh",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "coreutils",
+              "children": [
+                {
+                  "name": "glibc",
+                  "children": []
+                },
+                {
+                  "name": "pam",
+                  "children": [
+                    {
+                      "name": "glibc",
+                      "children": []
+                    },
+                    {
+                      "name": "db",
+                      "children": []
+                    },
+                    {
+                      "name": "cracklib",
+                      "children": [
+                        {
+                          "name": "glibc",
+                          "children": []
+                        },
+                        {
+                          "name": "zlib",
+                          "children": [
+                            {
+                              "name": "glibc",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "libtirpc",
+                      "children": [
+                        {
+                          "name": "libgssglue",
+                          "children": [
+                            {
+                              "name": "glibc",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "pambase",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "acl",
+                  "children": [
+                    {
+                      "name": "attr",
+                      "children": [
+                        {
+                          "name": "glibc",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "gmp",
+                  "children": [
+                    {
+                      "name": "gcc-libs",
+                      "children": []
+                    },
+                    {
+                      "name": "sh",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "libcap",
+                  "children": [
+                    {
+                      "name": "glibc",
+                      "children": []
+                    },
+                    {
+                      "name": "attr",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "glibc",
+              "children": []
+            },
+            {
+              "name": "sh",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "python2",
+      "children": [
+        {
+          "name": "bzip2",
+          "children": [
+            {
+              "name": "glibc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "gdbm",
+          "children": []
+        },
+        {
+          "name": "openssl",
+          "children": []
+        },
+        {
+          "name": "zlib",
+          "children": []
+        },
+        {
+          "name": "expat",
+          "children": [
+            {
+              "name": "glibc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "sqlite",
+          "children": [
+            {
+              "name": "readline",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "libffi",
+          "children": [
+            {
+              "name": "glibc",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

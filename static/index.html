@@ -1,0 +1,68 @@
+<!-- <!DOCTYPE HTML> -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+    <style>
+
+
+      path.arc {
+        cursor: move;
+        fill: #fff;
+      }
+
+      .node {
+        font-size: 10px san-serif;
+      }
+
+      .node:hover {
+        fill: #1f77b4;
+      }
+
+      .link {
+        fill: none;
+        stroke: #1f77b4;
+        stroke-opacity: .4;
+        pointer-events: none;
+      }
+
+      .link.source, .link.target {
+        stroke-opacity: 1;
+        stroke-width: 2px;
+      }
+
+      .node.target {
+        fill: #d62728 !important;
+      }
+
+      .link.source {
+        stroke: #d62728;
+      }
+
+      .node.source {
+        fill: #2ca02c;
+      }
+
+      .link.target {
+        stroke: #2ca02c;
+      }
+
+      form {
+        width: 80%;
+        padding: 10px;
+        margin: 10px 10px 10px 10px;
+        border: 2px solid rgb(40,40,120);
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="dataPanel"></div>
+
+    <div id="controlPanel"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="bundle.js"></script>
+  </body>
+</html>

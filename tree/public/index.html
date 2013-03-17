@@ -35,8 +35,6 @@
   .size([360, diameter / 2 - 120])
   .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
-  console.log("HELLO")
-
   var diagonal = d3.svg.diagonal.radial()
   .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
 
@@ -51,6 +49,8 @@ d3.json("flare-imports.json", function(classes) {
   var nodes = cluster.nodes(packages.root(classes)),
   links = packages.imports(nodes)
 
+  console.log(nodes)
+
   var link = svg.selectAll(".link")
   .data(links)
   .enter().append("path")
@@ -58,7 +58,7 @@ d3.json("flare-imports.json", function(classes) {
   .attr("d", diagonal);
 
   var node = svg.selectAll(".node")
-  .data(nodes.filter(function(n) { return !n.children; }))
+  .data(nodes) //.filter(function(n) { return !n.children; }))
   .enter().append("g")
   .attr("class", "node")
   .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
