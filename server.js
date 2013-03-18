@@ -39,7 +39,7 @@ io.sockets.on('connection', function (socket) {
     pactree.stdout.on('data', parsePactree(dict, sdict))
 
     pactree.stderr.on('data', function (data) {
-      console.log('stderr: ' + data);
+      console.log('stderr: ' + data)
     })
 
     pactree.on('close', function (code) {
@@ -47,8 +47,8 @@ io.sockets.on('connection', function (socket) {
        * Extract the root node before handing off.
        */
       var root =
-      socket.emit('pactree', dict[cmd.pkg])
-      console.log(cmd);
+      socket.emit('command-data', dict[cmd.pkg])
+      //console.log(cmd);
     })
   })
 })
@@ -58,46 +58,48 @@ function parsePactree(dict, sdict) {
 
   return function(data) {
 
-  var lines = data.toString().split('\n')
+    console.log('data length == ' + data.length)
 
-  lines.forEach( function (line) {
-    var myRegexp = /"(.+)"\s+->\s+"(.+)"/g;
-    var matches = myRegexp.exec(line);
+    var lines = data.toString().split('\n')
 
-    if (matches) {
-      var sname = matches[1]
-        , name = matches[2]
-        , node = dict[name]
-        , parent = dict[sname]
+    lines.forEach( function (line) {
+      var myRegexp = /"(.+)"\s+->\s+"(.+)"/g;
+      var matches = myRegexp.exec(line);
 
-      if (!node) {
+      if (matches) {
+        var sname = matches[1]
+          , name = matches[2]
+          , node = dict[name]
+          , parent = dict[sname]
+
+        if (!node) {
+          /*
+           * If target node not yet created, do it
+           */
+          node = dict[name] =  {"name": name, "children": []}
+        }
+        if (!parent) {
+          /*
+           * If parent node not yet created, do it.
+           */
+          parent = dict[sname] =  {"name": sname, "children": []}
+        }
+
+        if (sdict[name]) {
+          /*
+           * If node has been a source already create a new node
+           * to avoid duplicating dependency histories.
+           */
+          node = {"name": name, "children": []}
+        }
+
+        parent.children.push(node)
         /*
-         * If target node not yet created, do it
+         * Add parent to the source dictionary so we don't duplicate
+         * it as a child later on.
          */
-        node = dict[name] =  {"name": name, "children": []}
+        sdict[sname] = parent
       }
-      if (!parent) {
-        /*
-         * If parent node not yet created, do it.
-         */
-        parent = dict[sname] =  {"name": sname, "children": []}
-      }
-
-      if (sdict[name]) {
-        /*
-         * If node has been a source already create a new node
-         * to avoid duplicating dependency histories.
-         */
-        node = {"name": name, "children": []}
-      }
-
-      parent.children.push(node)
-      /*
-       * Add parent to the source dictionary so we don't duplicate
-       * it as a child later on.
-       */
-      sdict[sname] = parent
-    }
-  })
+    })
   }
 }

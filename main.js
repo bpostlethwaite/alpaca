@@ -1,6 +1,7 @@
 "use strict";
 var clusterView = require('./clusterView')
-  , slideways = require('slideways')
+  , Slideways = require('slideways')
+  , PushButt = require('pushbutt')
 
 var socket = io.connect('http://localhost')
 
@@ -10,35 +11,41 @@ cmd.name = 'pactree'
 cmd.args = '-g'
 cmd.pkg = 'nodejs'
 var data
-
+var view
 var options = setDisplay( {} )
 
 socket.emit('command', cmd)
 
-socket.on(cmd.name, function (cmddata) {
+socket.on('command-data', function (cmddata) {
   data = cmddata
 
-  var cd = clusterView(options, data)
+  if (view) {
+    view.updateData(data)
+    return
+  }
+  else
+    view = clusterView(options, data)
+
+  addInputControl( { title: 'butts' } )
 
   addSlider({
     name : "Tension"
-  , min: 0
-  , max: 100
+  , min : 1
+  , max : 100
   , snap: 1
   , init: 85
-  }, cd.setTension)
+  }, view.setTension)
 
   addSlider({
     name: "Rotation"
-  , min: 0
-  , max: 360
+  , min : 0
+  , max : 360
   , snap: 1
   , init: 0
-  }, cd.setRotation)
+  }, view.setRotation)
 
 
 })
-
 
 function setDisplay(options) {
   var dp = document.getElementById('dataPanel')
@@ -48,6 +55,35 @@ function setDisplay(options) {
   options.height = dh
 
   return options
+}
+
+function addInputControl(options) {
+  var cp = document.getElementById('controlPanel')
+    , form = document.createElement('form')
+    , div = document.createElement('div')
+    , input = document.createElement('input')
+
+  div.style['display'] = 'inline-block'
+
+  input.setAttribute('type', 'text')
+  input.setAttribute('size', 3)
+
+  cp.appendChild(form)
+  form.appendChild(input)
+  form.appendChild(div)
+
+  var butt = PushButt( options )
+  butt.appendTo(div)
+
+  butt.on(butt.event, function (id) {
+    if (input.value) {
+      socket.emit('command', {
+        name : 'pactree'
+      , args : '-g'
+      , pkg : input.value
+      })
+    }
+  })
 }
 
 function addSlider (opts, callback) {
@@ -74,24 +110,17 @@ function addSlider (opts, callback) {
   form.appendChild(input)
   form.appendChild(h4)
 
-  var slider = slideways(opts)
+  var slider = Slideways(opts)
   slider.appendTo(div)
 
   slider.input = input
   slider.heading = h4
 
   /*
-   * User can hardcode number into input field
+   * Note, need to bind slider.set to slider since slider.set employs 'this' which
+   * gets rebound to `onEnter` unless we explicitly bind it here.
    */
-  input.onkeypress = function (e) {
-    if (!e) e = window.event
-    var keyCode = e.keyCode || e.which
-    if (keyCode == '13'){
-      slider.set(input.value)
-      return false
-    }
-    return true
-  }
+  input.onkeypress = onEnter( slider.set.bind(slider), input )
 
   if(typeof(callback) == "function") {
     slider.on('value', function (value) {
@@ -100,6 +129,20 @@ function addSlider (opts, callback) {
     })
   }
 
-
   return slider
+}
+
+
+function onEnter (method, input) {
+
+  return function (event) {
+    if (!event) event = window.event
+    var keyCode = event.keyCode || event.which
+    if (keyCode == '13' ) {
+      if (!parseInt(input.value)) return false
+      method(input.value)
+      return false
+    }
+    return true
+  }
 }

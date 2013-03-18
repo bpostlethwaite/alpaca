@@ -18,7 +18,7 @@ module.exports = function (options, data) {
     , ry = h / 2
     , m0
     , rotate = 0
-
+    , line, path, cluster, bundle, nodes, links, splines
   /////////////////////////////////////////
   /*
    * Fit svg into container
@@ -30,73 +30,88 @@ module.exports = function (options, data) {
             .append("svg:g")
             .attr("transform", "translate(" + rx + "," + ry + ")")
 
+  var view = updateData(data)
 
+  function updateData(data) {
   /////////////////////////////////////////
   /*
    * Set Layouts and format data
    */
-  var cluster = d3.layout.cluster()
+  cluster = d3.layout.cluster()
                 .size([360, ry - 120])
                 .sort(function(a, b) {
                   return d3.ascending(a.name, b.name) })
 
-  var bundle = d3.layout.bundle();
+  bundle = d3.layout.bundle();
 
   // Flattening removes child parent linkage so save first
   var deps = buildDeps(data)
 
   // Get flattened nodes
-  var nodes = cluster.nodes(flatten(data))
-    , links = buildLinks(nodes, deps)
+  nodes = cluster.nodes(flatten(data))
+  links = buildLinks(nodes, deps)
 
   // Need to set .key from the example
   // depending on the repo [base, community, etc] where the
   // package came from, or other metadata
-  var splines = bundle(links);
+  splines = bundle(links);
 
   /////////////////////////////////////////
+
+
   /*
    * Set Geometry and Linkages
    */
-  var line = d3.svg.line.radial()
-             .interpolate("bundle")
-             .tension(.85)
-             .radius(function(d) { return d.y; })
-             .angle(function(d) { return d.x / 180 * Math.PI; })
+    line = d3.svg.line.radial()
+           .interpolate("bundle")
+           .tension(.85)
+           .radius(function(d) { return d.y; })
+           .angle(function(d) { return d.x / 180 * Math.PI; })
 
-  var path = svg.selectAll("path.link")
-             .data(links)
-             .enter().append("svg:path")
-             .attr("class", function(d) {
-               return "link source-" + d.source.name + " target-" + d.target.name
-             })
-             .attr("d", function(d, i) { return line(splines[i]) })
+    if (view) {
+      console.log('removing stuff')
+      svg.selectAll("path.link").remove()
+      svg.selectAll("g.node").remove()
+    }
 
-  /////////////////////////////////////////
-  /*
-   * Populate nodes
-   */
-  svg.selectAll("g.node")
-  .data(nodes)
-  .enter().append("svg:g")
-  .attr("class", "node")
-  .attr("id", function(d) {
-    return "node-" + d.name
-  })
-  .attr("transform", function(d) {
-    return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"})
-  .append("svg:text")
-  .attr("dx", function(d) {
-    return d.x < 180 ? 8 : -8
-  })
-  .attr("dy", ".31em")
-  .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end" })
-  .attr("transform", function(d) { return d.x < 180 ? null : "rotate(180)" })
-  .text(function(d) {
-    return d.name;
-  })
-  .on("mouseover", mouseover)
-  .on("mouseout", mouseout)
+    path = svg.selectAll("path.link")
+           .data(links)
+           .enter().append("svg:path")
+           .attr("class", function(d) {
+             return "link source-" + d.source.name + " target-" + d.target.name
+           })
+           .attr("d", function(d, i) { return line(splines[i]) })
+
+    /////////////////////////////////////////
+    /*
+     * Populate nodes
+     */
+
+    svg.selectAll("g.node")
+    .data(nodes)
+    .enter().append("svg:g")
+    .attr("class", "node")
+    .attr("id", function(d) {
+      return "node-" + d.name
+    })
+    .attr("transform", function(d) {
+      return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"})
+    .append("svg:text")
+    .attr("dx", function(d) {
+      return d.x < 180 ? 8 : -8
+    })
+    .attr("dy", ".31em")
+    .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end" })
+    .attr("transform", function(d) { return d.x < 180 ? null : "rotate(180)" })
+    .text(function(d) {
+      return d.name;
+    })
+    .on("mouseover", mouseover)
+    .on("mouseout", mouseout)
+
+    return true
+
+  }
 
 
   function flatten(nodes) {
@@ -126,6 +141,7 @@ module.exports = function (options, data) {
     })
     return mrflat
   }
+
 
 
   function buildLinks(nodes, deps) {
@@ -228,6 +244,7 @@ module.exports = function (options, data) {
 
   that.setTension = setTension
   that.setRotation = setRotation
+  that.updateData = updateData
 
   return that
 
